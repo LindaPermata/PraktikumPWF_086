@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Profil Mahasiswa
 
 **NAMA:** Linda Permata Sari
@@ -34,3 +35,6 @@ Login
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/08423794-dd6b-4564-b760-1af152841068" />
 Register
 >>>>>>> 6f007ec3fc6dd815a9569b161dbaee7805c4d211
+=======
+
+>>>>>>> a83911c4ca9be968fb4256075177d59b71bc21ec
