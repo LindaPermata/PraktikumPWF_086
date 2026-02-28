@@ -9,11 +9,11 @@ Pertemuan 1
 Pertemuan 2
 
 Halaman Login
-![alt text](public/images/login.jpeg)
+![alt text](public/images/login.png)
 
 Halaman Register
-![alt text](public/images/register.jpeg)
+![alt text](public/images/register.png)
 
 Halaman About
-![alt text](public/images/profile.jpeg)
+![alt text](public/images/profile.png)
 
