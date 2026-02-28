@@ -5,8 +5,11 @@
 Tampilan /about
 
 
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ae49c75-3f82-4a80-8d35-e3f3ddead111" />
 Login
+
+
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/08423794-dd6b-4564-b760-1af152841068" />
 Register
