@@ -13,11 +13,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        try {
+            $user = User::firstOrCreate(
+                ['email' => 'linda@example.com'],
+                [
+                    'name' => 'Linda Permata',
+                    'password' => bcrypt('password'),
+                ]
+            );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+            \App\Models\Product::factory(20)->create([
+                'user_id' => $user->id,
+            ]);
+
+            \App\Models\Category::factory(10)->create();
+            
+            $this->command->info('Seeding successful!');
+        } catch (\Exception $e) {
+            $this->command->error('Seeding failed: ' . $e->getMessage());
+        }
     }
 }
