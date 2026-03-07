@@ -25,10 +25,10 @@ ERD
 Database Users
 ![alt text](public/images/dbusers.png)
 
-Database Users
+Database Kategori
 ![alt text](public/images/dbkategori.png)
 
-Database Users
+Database Produk
 ![alt text](public/images/dbproduk.png)
 
 
