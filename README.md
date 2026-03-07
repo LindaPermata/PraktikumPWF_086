@@ -17,3 +17,6 @@ Halaman Register
 Halaman About
 ![alt text](public/images/profile.png)
 
+ERD
+![alt text](public/images/erdprak.png)
+
