@@ -17,6 +17,8 @@ Halaman Register
 Halaman About
 ![alt text](public/images/profile.png)
 
+Pertemuan 3
+
 ERD
 ![alt text](public/images/erdprak.png)
 
