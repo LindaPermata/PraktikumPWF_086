@@ -9,5 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    // Tambahkan baris ini
+    protected $fillable = [
+        'name',
+        'quantity',
+        'price',
+        'user_id',
+    ];
 }
