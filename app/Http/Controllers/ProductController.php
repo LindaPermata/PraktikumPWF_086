@@ -11,12 +11,19 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-
         return view('product.index', compact('products'));
+    }
+
+    public function create()
+    {
+        $users = User::orderBy('name')->get();
+        return view('product.create', compact('users'));
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', Product::class); 
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'quantity' => 'required|integer',
@@ -24,28 +31,30 @@ class ProductController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
 
-        $product = Product::create($validated);
+        Product::create($validated);
 
         return redirect()->route('product.index')->with('success', 'Product created successfully.');
-    }
-
-    public function create()
-    {
-        $users = User::orderBy('name')->get();
-
-        return view('product.create', compact('users'));
     }
 
     public function show($id)
     {
         $product = Product::findOrFail($id);
-
         return view('product.view', compact('product'));
+    }
+
+    public function edit(Product $product)
+    {
+        $this->authorize('update', $product); // 🔥 WAJIB
+
+        $users = User::orderBy('name')->get();
+        return view('product.edit', compact('product', 'users'));
     }
 
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+
+        $this->authorize('update', $product); // 🔥 WAJIB
 
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
@@ -59,19 +68,19 @@ class ProductController extends Controller
         return redirect()->route('product.index')->with('success', 'Product updated successfully.');
     }
 
-    public function edit(Product $product)
-    {
-        $users = User::orderBy('name')->get();
-
-        return view('product.edit', compact('product', 'users'));
-    }
-
     public function delete($id)
     {
         $product = Product::findOrFail($id);
 
+        $this->authorize('delete', $product); // 🔥 WAJIB
+
         $product->delete();
 
         return redirect()->route('product.index')->with('success', 'Product berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return "Export berhasil (khusus admin)";
     }
 }

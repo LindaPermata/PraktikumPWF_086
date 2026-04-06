@@ -14,26 +14,34 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
+    // About
+    Route::get('/about', [AboutController::class, 'index'])
+        ->name('about');
 
-Route::get('/about', [AboutController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('about');
+    // Product
 
-Route::middleware('auth')->group(function () {
-
-    // Product Page
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
-    Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+
+   
     Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
+    Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+    // =========================
+    // EXPORT (FIX ERROR)
+    // =========================
+    Route::get('/products/export', [ProductController::class, 'export'])
+        ->middleware('can:export-product')
+        ->name('products.export');
 
 });
 

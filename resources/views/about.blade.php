@@ -10,10 +10,11 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-12 text-gray-900 dark:text-gray-100">
                     <div class="space-y-2 text-lg">
-                        <p><strong>Nama :</strong> Linda Permata Sari</p>
-                        <p><strong>NIM :</strong> 20230140086</p>
-                        <p><strong>Program Studi :</strong> Teknologi Informasi</p>
-                        <p><strong>Hobi :</strong> Ngoding</p>
+                        <div>
+                        <p>Nama : {{ auth()->user()->name }}</p>
+                        <p>Email : {{ auth()->user()->email }}</p>
+                        <p>Role : {{ auth()->user()->role }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
