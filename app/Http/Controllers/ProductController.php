@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller
 {
@@ -16,24 +18,23 @@ class ProductController extends Controller
 
     public function create()
     {
-        $users = User::orderBy('name')->get();
-        return view('product.create', compact('users'));
+        return view('product.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        $this->authorize('create', Product::class); 
+        $this->authorize('create', Product::class);
 
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'quantity' => 'required|integer',
-            'price' => 'required|numeric',
-            'user_id' => 'required|exists:users,id',
-        ]);
+        $validated = $request->validated();
+
+        
+        $validated['user_id'] = Auth::id();
 
         Product::create($validated);
 
-        return redirect()->route('product.index')->with('success', 'Product created successfully.');
+        return redirect()
+            ->route('product.index')
+            ->with('success', 'Product created successfully.');
     }
 
     public function show($id)
@@ -44,39 +45,41 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $this->authorize('update', $product); // 🔥 WAJIB
+        $this->authorize('update', $product);
 
-        $users = User::orderBy('name')->get();
-        return view('product.edit', compact('product', 'users'));
+        return view('product.edit', compact('product'));
     }
 
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
 
-        $this->authorize('update', $product); // 🔥 WAJIB
+        $this->authorize('update', $product);
 
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
             'quantity' => 'sometimes|integer',
             'price' => 'sometimes|numeric',
-            'user_id' => 'sometimes|exists:users,id',
         ]);
 
         $product->update($validated);
 
-        return redirect()->route('product.index')->with('success', 'Product updated successfully.');
+        return redirect()
+            ->route('product.index')
+            ->with('success', 'Product updated successfully.');
     }
 
     public function delete($id)
     {
         $product = Product::findOrFail($id);
 
-        $this->authorize('delete', $product); // 🔥 WAJIB
+        $this->authorize('delete', $product);
 
         $product->delete();
 
-        return redirect()->route('product.index')->with('success', 'Product berhasil dihapus');
+        return redirect()
+            ->route('product.index')
+            ->with('success', 'Product berhasil dihapus');
     }
 
     public function export()
