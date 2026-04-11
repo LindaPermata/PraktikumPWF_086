@@ -25,9 +25,12 @@ class ProductPolicy
 
     public function update(User $user, Product $product): bool
     {
-        // hanya boleh edit product miliknya sendiri
+        if ($user->role === 'admin') {
+            return true;
+        }
+
         return $user->id === $product->user_id;
-    }
+    }   
 
     public function delete(User $user, Product $product): bool
     {

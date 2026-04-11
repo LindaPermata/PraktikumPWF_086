@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreProductRequest;
@@ -18,6 +17,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        
         return view('product.create');
     }
 
@@ -47,6 +47,7 @@ class ProductController extends Controller
     {
         $this->authorize('update', $product);
 
+        
         return view('product.edit', compact('product'));
     }
 
@@ -56,6 +57,7 @@ class ProductController extends Controller
 
         $this->authorize('update', $product);
 
+        
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
             'quantity' => 'sometimes|integer',

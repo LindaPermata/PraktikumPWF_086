@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="text-xl font-black uppercase tracking-widest">
                         {{ __('About') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('product.index')" :active="request()->routeIs('product.index')" class="text-xl font-black uppercase tracking-widest">
+                        {{ __('Product') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -53,3 +53,8 @@ Halaman Produk Admin
 Halaman Produk User
 ![alt text](public/images/produkuser.png) 
 
+
+Pertemuan 6
+
+Halaman Edit Produk (Menambahkan Validasi)
+![alt text](public/images/validasieditproduk.png) 
