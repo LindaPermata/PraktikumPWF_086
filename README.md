@@ -48,8 +48,8 @@ Halaman Lihat Produk
 Pertemuan 4
 
 Halaman Produk Admin
-![alt text](public/images/produkadmin.png.png.png)
+![alt text](public/images/produkadmin.png)
 
 Halaman Produk User
-![alt text](public/images/produkuser.png.png)
+![alt text](public/images/produkuser.png) 
 
