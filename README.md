@@ -45,5 +45,11 @@ Halaman Hapus Produk
 Halaman Lihat Produk
 ![alt text](public/images/viewproduct.png)
 
+Pertemuan 4
 
+Halaman Produk Admin
+![alt text](public/images/produk%20admin.png.png.png)
+
+Halaman Produk User
+![alt text](public/images/produk%20user.png.png)
 
