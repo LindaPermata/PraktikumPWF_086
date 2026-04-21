@@ -59,8 +59,7 @@ Pertemuan 6
 Halaman Edit Produk (Menambahkan Validasi)
 ![alt text](public/images/validasieditproduk.png) 
 
-
 Pertemuan 7
 
-Tambah button
-![alt text](public/images/tambahbutton.png.)
+Tambah Button
+![alt text](public/images/tambahbutton.png) 
