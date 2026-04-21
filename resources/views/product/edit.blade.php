@@ -18,12 +18,7 @@
                         </div>
                     </div>
 
-                    {{-- Hidden Delete Form --}}
-                    @can('delete', $product)
-                    <form id="delete-product-form" action="{{ route('product.delete', $product->id) }}" method="POST" class="hidden">
-                        @csrf @method('DELETE')
-                    </form>
-                    @endcan
+
 
                     {{-- Form Update --}}
                     <form action="{{ route('product.update', $product) }}" method="POST" class="space-y-6">
@@ -59,14 +54,7 @@
                         <div class="flex items-center justify-between mt-8">
                             {{-- TOMBOL DELETE BARU --}}
                             @can('delete', $product)
-                            <button type="button" 
-                                    onclick="if(confirm('Yakin mau hapus produk ini?')) document.getElementById('delete-product-form').submit();"
-                                    class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                                Delete
-                            </button>
+                                <x-delete-button :url="route('product.delete', $product->id)" name="Product" />
                             @endcan
 
                             <div class="flex gap-3">
