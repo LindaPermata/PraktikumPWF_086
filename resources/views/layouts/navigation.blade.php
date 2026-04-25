@@ -12,11 +12,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="text-xl font-black uppercase tracking-widest">
-                        {{ __('About') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('product.index')" :active="request()->routeIs('product.index')" class="text-xl font-black uppercase tracking-widest">
                         {{ __('Product') }}
+                    </x-nav-link>
+                    @can('access-category')
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index*')" class="text-xl font-black uppercase tracking-widest">
+                        {{ __('Category') }}
+                    </x-nav-link>
+                    @endcan
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="text-xl font-black uppercase tracking-widest">
+                        {{ __('About') }}
                     </x-nav-link>
                 </div>
             </div>

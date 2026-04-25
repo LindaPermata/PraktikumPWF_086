@@ -34,6 +34,20 @@
                             @error('name') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
                         </div>
 
+                        {{-- Category --}}
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Kategori</label>
+                            <select name="category_id" class="{{ $inputStyle }}">
+                                <option value="" disabled {{ old('category_id', $product->category_id) ? '' : 'selected' }}>-- Pilih Kategori --</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category_id') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+                        </div>
+
                         {{-- Quantity & Price --}}
                         <div class="grid grid-cols-2 gap-6">
                             <div>

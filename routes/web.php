@@ -43,6 +43,16 @@ Route::middleware('auth')->group(function () {
         ->middleware('can:export-product')
         ->name('products.export');
 
+    // Category
+    Route::middleware('can:access-category')->group(function () {
+        Route::get('/category', [\App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
+        Route::get('/category/create', [\App\Http\Controllers\CategoryController::class, 'create'])->name('category.create');
+        Route::post('/category', [\App\Http\Controllers\CategoryController::class, 'store'])->name('category.store');
+        Route::get('/category/{category}/edit', [\App\Http\Controllers\CategoryController::class, 'edit'])->name('category.edit');
+        Route::put('/category/{category}', [\App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
+        Route::delete('/category/{category}', [\App\Http\Controllers\CategoryController::class, 'destroy'])->name('category.destroy');
+    });
+
 });
 
 require __DIR__.'/auth.php';

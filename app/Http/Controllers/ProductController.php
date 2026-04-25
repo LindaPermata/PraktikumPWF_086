@@ -17,8 +17,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        
-        return view('product.create');
+        $categories = \App\Models\Category::all();
+        return view('product.create', compact('categories'));
     }
 
     public function store(StoreProductRequest $request)
@@ -47,8 +47,8 @@ class ProductController extends Controller
     {
         $this->authorize('update', $product);
 
-        
-        return view('product.edit', compact('product'));
+        $categories = \App\Models\Category::all();
+        return view('product.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -62,6 +62,7 @@ class ProductController extends Controller
             'name' => 'sometimes|string|max:255',
             'quantity' => 'sometimes|integer',
             'price' => 'sometimes|numeric',
+            'category_id' => 'sometimes|exists:categories,id',
         ]);
 
         $product->update($validated);

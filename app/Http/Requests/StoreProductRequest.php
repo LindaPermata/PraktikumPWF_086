@@ -25,7 +25,7 @@ class StoreProductRequest extends FormRequest
         'name' => 'required|string|max:255',
         'quantity' => 'required|integer',
         'price' => 'required|numeric',
-        'user_id' => 'required|exists:users,id',
+        'category_id' => 'required|exists:categories,id',
     ];
 }
 
@@ -41,8 +41,8 @@ public function messages(): array
         'price.required' => 'Harga wajib diisi.',
         'price.numeric' => 'Harga harus angka.',
 
-        'user_id.required' => 'User wajib dipilih.',
-        'user_id.exists' => 'User tidak valid.',
+        'category_id.required' => 'Kategori wajib dipilih.',
+        'category_id.exists' => 'Kategori tidak valid.',
         ];
     }
 }
