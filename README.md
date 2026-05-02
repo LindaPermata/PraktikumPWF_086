@@ -106,7 +106,7 @@ POST Produk
 ![alt text](public/images/postproduk.png)
 
 GET Produk by id
-![alt text](public/images/getprodukbypid.png)
+![alt text](public/images/getprodukbyid.png)
 
 PUT Produk
 ![alt text](public/images/updateproduk.png)
